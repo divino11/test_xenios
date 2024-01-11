@@ -1,3 +1,10 @@
+# How to start
+- Clone from github git clone git@github.com:divino11/test_xenios.git
+- composer install for install all packages
+- ./vendor/bin/sail up -d for build containers and run docker
+- docker compose exec laravel.test php artisan key:generate generate new application key
+- docker compose exec laravel.test php artisan migrate migrate database
+
 # Тестовое задание по Laravel:
 
 Создать примитивный мессенджер
