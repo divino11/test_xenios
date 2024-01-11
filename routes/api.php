@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Auth\AccessController;
 use App\Http\Controllers\Auth\AuthController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,4 +30,11 @@ Route::group(['prefix' => 'auth'], static function () {
         // Logout
         Route::delete('access', [AccessController::class, 'destroy']);
     });
+});
+
+Route::group(['middleware' => [
+    'auth:sanctum',
+]], static function () {
+    Route::apiResource('groups', GroupController::class);
+    Route::apiResource('messages', MessageController::class);
 });
