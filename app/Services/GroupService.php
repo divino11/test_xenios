@@ -19,7 +19,10 @@ class GroupService
 
     public function getGroup(Group $group): array
     {
-        $messages = $group->messages()->orderByDesc('created_at')->get();
+        $messages = $group->messages()
+            ->with('user')
+            ->orderByDesc('created_at')
+            ->get();
 
         return [
             'group' => $group,
